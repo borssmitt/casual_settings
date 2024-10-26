@@ -36,3 +36,13 @@ nmcli connection down "$CONNECTION_NAME" && nmcli connection up "$CONNECTION_NAM
 #Checing
 echo "New configuration for "$CONNECTION_NAME:"
 nmcli connection show "$CONNECTION_NAME" | grep "ipv4"
+
+#Rebooting
+read -p "Do you want to reboot the server now? (y/n): " REBOOT_CONFIRM
+
+if [[ "$REBOOT_CONFIRM" == [Yy] ]]; then
+    echo "Rebooting the server..."
+    sudo reboot
+else
+    echo "Server reboot cancelled."
+fi
